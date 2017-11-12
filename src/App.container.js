@@ -4,9 +4,14 @@ import logo from './logo.svg';
 import './App.css';
 import { getTrendingItems } from './reducers/trending';
 import TrendingItemComponent from './TrendingItem.component';
+import AppControl from './AppControl.component';
 
 class AppContainer extends Component {
   componentWillMount() {
+    this.props.getTrendingItems();
+  }
+
+  onLoadMore = () => {
     this.props.getTrendingItems();
   }
 
@@ -29,6 +34,7 @@ class AppContainer extends Component {
             }
           </ul>
         </div>
+        <AppControl loading={trending.loading} onLoadMore={this.onLoadMore} />
       </div>
     );
   }
