@@ -22,14 +22,31 @@
   overflow: hidden;
   text-align: center;
   margin: 0;
+  position: relative;
+  cursor: zoom-in;
+}
+
+.content-list li .picture .anim-img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.content-list li .picture .anim-img.anim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: none;
+  margin: auto;
 }
 
 .content-list li .picture img {
+  width: 100%;
   height: 100%;
-  display: block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .content-list li .author {

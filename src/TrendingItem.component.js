@@ -3,14 +3,28 @@ import PropTypes from 'prop-types';
 import './styles/item.css';
 
 export default class TrendingItem extends Component {
+  onImgClick = () => {
+    console.log('click image');
+  }
+
   render() {
     const { item } = this.props;
-    const { user = {} } = item; 
+    const { user = {} } = item;
+    const imgSize = {
+      width: `${item.images.fixed_height.width}px`,
+      height: `${item.images.fixed_height.height}px`,
+    }
+    const placeholderStyle = {
+      paddingBottom: `${item.images.fixed_height.height}px`,
+    }
     return (
       <div>
         <div className="img-wrapper">
           <figure className="picture">
-            <img src={item.images.fixed_height.url} alt={item.title} />
+            <div className="placeholder" style={placeholderStyle}></div>
+            <div className="anim-img" style={imgSize} onClick={this.onImgClick}>
+              <img src={item.images.fixed_height.url} alt={item.title} />
+            </div>
           </figure>
         </div>
         <div className="author">
