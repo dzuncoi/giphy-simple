@@ -34,7 +34,10 @@ class AppContainer extends Component {
             }
           </ul>
         </div>
-        <AppControl loading={trending.loading} onLoadMore={this.onLoadMore} />
+        <AppControl
+          loading={trending.loading}
+          hasError={!!trending.errorInfo}
+          onLoadMore={this.onLoadMore} />
       </div>
     );
   }

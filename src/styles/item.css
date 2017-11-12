@@ -6,7 +6,7 @@
 
 .content-list li {
   display: inline-block;
-  width: calc(100% / 4 - 30px);
+  width: calc(100% / 2 - 30px);
   padding: 0 15px;
   margin-bottom: 20px;
 }
@@ -103,4 +103,17 @@
   font-size: 14px;
   padding-left: 10px;
   color: #3a8bbb;
+}
+
+/* 2 basic breakpoints for tablet and desktop */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content-list li {
+    width: calc(100% / 3 - 30px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .content-list li {
+    width: calc(100% / 4 - 30px);
+  }
 }

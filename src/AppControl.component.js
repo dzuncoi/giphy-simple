@@ -6,6 +6,9 @@ const AppControl = props => {
   return (
     <div className="app-control">
       {
+        props.hasError && <p className="txt-error">There are some problems. Please try again later.</p>
+      }
+      {
         props.loading ?
         <div className="loading"></div> :
         <button onClick={props.onLoadMore}>
@@ -17,12 +20,14 @@ const AppControl = props => {
 }
 
 AppControl.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
+  hasError: PropTypes.bool,
   onLoadMore: PropTypes.func.isRequired
 }
 
 AppControl.defaultProps = {
   loading: false,
+  hasError: false,
   onLoadMore: () => true
 }
 

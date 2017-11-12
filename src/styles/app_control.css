@@ -14,6 +14,11 @@ button:hover {
   background: #0860a7;
 }
 
+.txt-error {
+  font-size: 12px;
+  color: crimson;
+}
+
 .app-control {
   padding-bottom: 30px;
 }

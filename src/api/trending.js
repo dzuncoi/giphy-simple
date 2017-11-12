@@ -5,7 +5,7 @@ const retrieveTrendingItems = (options) => {
     params: {
       api_key: 'EkTsNImIP00myvuHfG0Xt1KPsnAdhcza',
       offset: options.skip || 0,
-      limit: 5,
+      limit: 20,
     }
   })
 }

@@ -8,6 +8,7 @@ const initialState = {
   items: [],
   total: 0,
   loading: false,
+  errorInfo: null,
 }
 
 export default (state = initialState, action) => {
@@ -15,7 +16,8 @@ export default (state = initialState, action) => {
     case GET_TRENDING_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        errorInfo: null,
       }
     }
 
@@ -25,6 +27,7 @@ export default (state = initialState, action) => {
         loading: false,
         items: state.items.concat(action.items),
         total: state.total + action.items.length,
+        errorInfo: null,
       }
     }
 
@@ -32,6 +35,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        errorInfo: action.error
       }
     }
 
@@ -47,6 +51,11 @@ export const getTrendingItems = () => (dispatch, getState) => {
     dispatch({
       type: GET_TRENDING_SUCCESS,
       items: data.data
+    })
+  }).catch(error => {
+    dispatch({
+      type: GET_TRENDING_FAILURE,
+      error,
     })
   })
 }
