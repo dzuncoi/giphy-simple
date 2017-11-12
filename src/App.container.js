@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import { getTrendingItems } from './reducers/trending';
-import './styles/item.css';
+import TrendingItemComponent from './TrendingItem.component';
 
 class AppContainer extends Component {
   componentWillMount() {
@@ -23,17 +23,7 @@ class AppContainer extends Component {
             {
               trending.items.map(item => (
                 <li key={item.id}>
-                  <div className="img-wrapper">
-                    <figure className="picture">
-                      <img src={item.images.fixed_height.url} alt={item.title} />
-                    </figure>
-                  </div>
-                  <div className="author">
-                    <a href={item.user && item.user.profile_url} target="_blank">
-                      <img src={item.user && item.user.avatar_url} />
-                      <h3>{item.user && item.user.username || 'No user'}</h3>
-                    </a>
-                  </div>
+                  <TrendingItemComponent item={item} />
                 </li>
               ))
             }
