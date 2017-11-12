@@ -26,27 +26,63 @@
   cursor: zoom-in;
 }
 
+.content-list li .picture.is-zoomed {
+  overflow: visible;
+  cursor: zoom-out;
+}
+
 .content-list li .picture .anim-img {
   display: block;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  transition: all ease .35s;
 }
 
-.content-list li .picture .anim-img.anim {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+.content-list li .picture.is-zoomed .anim-img {
   transform: none;
-  margin: auto;
+  z-index: 900;
 }
 
-.content-list li .picture img {
+.content-list li .picture .anim-img:after {
+  content: "";
+  opacity: 0;
+  visibility: hidden;
+  top: -100vh;
+  left: -100vw;
   width: 100%;
   height: 100%;
+  padding: 100vh 100vw;
+  z-index: -1;
+  background: white;
+  position: absolute;
+  transition: opacity .25s ease;
+}
+
+.content-list li .picture.is-zoomed .anim-img:after {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .25s ease;
+}
+
+.content-list li .picture .anim-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content-list li .picture .anim-img img.media-fixed,
+.content-list li .picture.is-zoomed .anim-img img.media-zoom {
+  visibility: visible;
+  opacity: 1;
+}
+.content-list li .picture.is-zoomed .anim-img img.media-fixed,
+.content-list li .picture .anim-img img.media-zoom {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .content-list li .author {
